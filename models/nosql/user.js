@@ -25,5 +25,6 @@ const UserSchema = new mongoose.Schema(
         versionKey:false
     }
 );
+//uso de borrado logico 
 UserSchema.plugin(mongooseDelete, {overrideMethods: "all"})
 module.exports =mongoose.model("users", UserSchema)
