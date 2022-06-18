@@ -1,3 +1,4 @@
+const { matchedData } = require('express-validator');
 const {storageModel} = require('../models')
 const PUBLIC_URL = process.env.PUBLIC_URL
 /**
@@ -6,9 +7,16 @@ const PUBLIC_URL = process.env.PUBLIC_URL
  * @param {*} res 
  */
 
-const getItems = async (req, res) => {
-    const data = await storageModel.find({})
-    res.send({data});
+ const getItems = async (req, res) => {
+
+    try {
+        const data = await storageModel.find({})
+        res.send({data});
+    } catch (error) {
+        handleHttpError(res, "ERROR_GET_ITEMS", 404)
+    }
+
+   
     
 };
 /**
@@ -16,7 +24,17 @@ const getItems = async (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-const getItem = (req, res) => {};
+const getItem = async(req, res) => {
+    try {
+        req = matchedData(req);
+        const {id} = req;
+        const data = await storageModel.findById(id);
+        res.send({data});
+
+    } catch (error) {
+        handleHttpError(res, "ERROR_GET_ITEM")
+    }
+};
 /**
  * Insertar un registro
  * @param {*} req 
