@@ -12,8 +12,9 @@ const UserSchema = new mongoose.Schema(
             type:String,
             unique:true
         },
-        passwaord:{
-            type:String
+        password:{
+            type:String,
+            select:false
         },
         role:{
             type:["user", "admin"],

@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
         const data = await usersModel.find({})
         res.send({data});
     } catch (error) {
-        handleHttpError(res, "ERROR_GET_USER", 404)
+        handleHttpError(res, "ERROR_GET_ITEMS", 404)
     }
 
    
@@ -32,7 +32,7 @@ const getUser =async (req, res) => {
         res.send({data});
 
     } catch (error) {
-        handleHttpError(res, "ERROR_GET_USER")
+        handleHttpError(res, "ERROR_GET_ITEM")
     }
 };
 /**
@@ -49,7 +49,7 @@ const createUser = async (req, res) => {
         res.send({data})
         console.log(body)
     } catch (error) {
-        handleHttpError(res, "ERROR_CREATE_USER", 404)
+        handleHttpError(res, "ERROR_CREATE_ITEMS", 404)
     }
     
 };
@@ -70,7 +70,7 @@ const updateUser = async (req, res) => {
         res.send({data})
         console.log(body)
     } catch (error) {
-        handleHttpError(res, "ERROR_UPDATE_USER", 404)
+        handleHttpError(res, "ERROR_UPDATE_ITEMS", 404)
     }
     
 };
@@ -87,7 +87,7 @@ const deleteUser = async (req, res) => {
         res.send({data});
 
     } catch (error) {
-        handleHttpError(res, "ERROR_DELETE_USER")
+        handleHttpError(res, "ERROR_DELETE_ITEM")
     }
 };
 
